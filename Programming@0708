@@ -1,0 +1,76 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+
+
+First solution version:
+
+class Solution {
+public:
+    long listToNumbers(ListNode* l1){
+        int count = 1;
+        long number = 0;
+        while(l1 != NULL){
+            number += l1->val*count;
+            count *= 10;
+            l1 = l1->next;
+        }
+        return number;
+    }
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        long sum = listToNumbers(l1) + listToNumbers(l2);
+        ListNode* result = new ListNode(sum % 10);
+        sum /= 10;
+        ListNode* thisOne = result;
+        while (sum != 0){
+            thisOne->next = new ListNode (sum % 10);
+            thisOne = thisOne->next;
+            sum /= 10;
+        }
+        return result;
+    }
+    
+However, there is a runtime error: signed integer overflow: 1000000000 * 9 cannot be represented in type 'int' (solution.cpp). 
+So we can't convert the linked list into an integer; we should just use the linked list itself.
+
+Following is the completed solution:
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        bool addOne= false;
+        ListNode* result = new ListNode(0);
+        ListNode* thisOne = result;
+        while(l1 != NULL || l2 != NULL) {
+            int first = (l1 != NULL) ? l1->val : 0;
+            int second = (l2 != NULL) ? l2->val : 0;
+            int sum = first + second;
+                if (addOne){
+                    sum++;
+                    addOne = false;}
+                if (sum >= 10){
+                    sum = sum % 10;
+                    addOne = true;
+                }
+            thisOne -> next = new ListNode(sum);
+            thisOne = thisOne -> next;
+            if(l1!= NULL)
+                l1 = l1->next;
+            if(l2!=NULL)
+                l2 = l2->next;}
+        if(addOne)
+            thisOne ->next = new ListNode(1);
+        return result->next;
+    }
+};
+
+Runtime: 20 ms, faster than 92.87% of C++ online submissions for Add Two Numbers.
+Memory Usage: 10.2 MB, less than 80.77% of C++ online submissions for Add Two Numbers.
+
+Summary: 1. Remember to use dummy node
+2. Remeber to add an extra one (5 + 5 = 0->1 but not 0)
