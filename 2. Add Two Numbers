@@ -74,3 +74,5 @@ Memory Usage: 10.2 MB, less than 80.77% of C++ online submissions for Add Two Nu
 
 Summary: 1. Remember to use dummy node
 2. Remeber to add an extra one (5 + 5 = 0->1 but not 0)
+
+2019.07.08
