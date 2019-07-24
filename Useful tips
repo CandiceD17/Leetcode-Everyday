@@ -2,5 +2,6 @@
   sort(nums.begin(),nums.end());
   erase(nums.begin(), nums.begin()+size); 
   nums.front()[access the first element];
-  nums.back() [access the last element]
+  nums.back() [access the last element];
+  result.push_back(vector<int>{first,second});
   are useful algorithms
