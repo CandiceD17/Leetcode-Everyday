@@ -1,5 +1,5 @@
 Using brute force:
-```
+```c++
 class Solution {
 public:
     bool valid(vector<char> test){
