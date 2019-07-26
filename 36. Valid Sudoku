@@ -65,3 +65,27 @@ public:
 };
 
 However, there is an easier way to do this:
+We can only do one time traversal, and record each number in separate unordered map.
+
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        vector<unordered_map<int,int>> row(9), col(9), block(9);
+        for(int i = 0; i < 9; ++ i){
+            for(int j = 0; j < 9; ++ j){
+                int bindex =  (i / 3)* 3 + j / 3;
+                char cur = board[i][j];
+                if(cur == '.')  continue;
+                if(row[i].count(cur) || col[j].count(cur) || block[bindex].count(cur))  return false;
+                row[i][cur] = 1;
+                col[j][cur] = 1;
+                block[bindex][cur] = 1;
+            }
+        }
+        return true;
+    }
+};
+
+Author：youlookdeliciousc
+
+2019.07.26
