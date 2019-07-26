@@ -6,4 +6,9 @@
       result.push_back(vector<int>{first,second});
   are useful algorithms
 
-2. Binary search stops at the number closet to target.
+2. Binary search stops at the number closest to target.
+
+3. In unordered_map:
+      map.count(key); //count how many times 'key' appears in this map
+      ...
+   are useful algorithms
