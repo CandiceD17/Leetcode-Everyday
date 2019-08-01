@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int r = obstacleGrid.size();
+        if(r==0)
+            return 0;
+        if(obstacleGrid[0][0]==1)
+            return 0;
+        int c = obstacleGrid[0].size();
+        vector<long long> temp(c,0);
+        vector<vector<long long>> record(r,temp);
+        for(int i=0; i<r; i++){
+            if(obstacleGrid[i][0]==1)
+                break;
+            record[i][0]=1;
+        }
+        for(int i=0; i<c; i++){
+            if(obstacleGrid[0][i]==1)
+                break;
+            record[0][i]=1;
+        }
+        for(int i=1; i<r; i++){
+            for(int j=1; j<c; j++){
+                if(obstacleGrid[i][j]==1){
+                    record[i][j]=0;
+                    continue;}
+                record[i][j] = record[i-1][j]+record[i][j-1];
+            }
+        }
+        return (int)record[r-1][c-1];
+    }
+};
