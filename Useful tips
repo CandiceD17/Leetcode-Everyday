@@ -12,3 +12,7 @@
       map.count(key); //count how many times 'key' appears in this map
       ...
    are useful algorithms
+
+4. Tree:
+   Only process & deal with one node, the current node, at one time
+   Next recursion to do the left/right ones.
