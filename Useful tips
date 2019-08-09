@@ -4,6 +4,8 @@
       nums.front()[access the first element];
       nums.back() [access the last element];
       result.push_back(vector<int>{first,second});
+      res.insert(res.begin(), temp); //push to the front
+      reverse(res.begin(),res.end());
   are useful algorithms
 
 2. Binary search stops at the number closest to target.
