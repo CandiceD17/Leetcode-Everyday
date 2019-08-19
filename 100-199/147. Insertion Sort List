@@ -1,3 +1,4 @@
+``` cpp[]
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -36,6 +37,7 @@ public:
         return dummy->next;
     }
 };
+```
 
 2019.08.19
 My BFF is going abroad today :(
