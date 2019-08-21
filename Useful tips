@@ -6,7 +6,7 @@
       result.push_back(vector<int>{first,second});
       res.insert(res.begin(), temp); //push to the front
       reverse(res.begin(),res.end());
-      temo.pop_back();
+      temp.pop_back();
   are useful algorithms
 
 2. Binary search stops at the number closest to target.
